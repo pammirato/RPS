@@ -17,17 +17,22 @@ if not input:
 
 #for every turn but the first we go here	
 else:
+
+
+	#this stores the opponents last move in the history
+	oldThrows.append(*REPLACE*)
+
 	#len(oldThrows) == the number of rounds played
 	#so if len(oldThrows) == 1, we have only played 1 round
 	#and can't look two rounds back! just choose random
-	if len(oldThrows) == *REPLACE*:
+	if len(oldThrows) < *REPLACE*:
 		output = random.choice(["R","P", "S"])
 
 	#now we know we have played at least 2 rounds so far
 	else:
 
 		#get our opponets throw from 2 rounds back
-		twoBackThrow = oldThrows[len(oldThrows)-2]
+		twoBackThrow = oldThrows[len(oldThrows)-*REPLACE*]
 
 		#pick the move that beats twoBackThrow
 		if twoBackThrow == "R":
@@ -39,4 +44,4 @@ else:
 		elif twoBackThrow == "S":
 			*REPLACE* = "R"
 
-	oldThrows.append(*REPLACE*)
+	
